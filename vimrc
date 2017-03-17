@@ -7,6 +7,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tomasr/molokai'
 
 "Plugins go before this
 call vundle#end()
@@ -26,10 +27,13 @@ map<F8> :TagbarToggle<CR>
 "g:airline#extensions#tabline#enabled = 1
 :set timeoutlen=50
 
-"Vim colorscheme
-colorscheme molokai
-set background=dark
 syntax enable
+
+"set background=dark
+"Vim colorscheme
+let g:molokai_original=1
+let g:rehash256=1
+colorscheme molokai
 
 ":set transparency=15
 
