@@ -7,71 +7,70 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tomasr/molokai'
+Plugin 'beyondmarc/glsl.vim'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'raimondi/delimitmate'
 
 "Plugins go before this
 call vundle#end()
 filetype plugin indent on
 
-"Tagbar settings
-let g:airline#extensions#tagbar#enabled = 1
-let g:tagbar_ctags_bin = '~/Documents/ctags-5.8/ctags'
-map<F8> :TagbarToggle<CR>
-
 "Airline bar setting
-:set laststatus=2
+set laststatus=2
 
-:let airline_left_sep = '▶'
-:let airline_right_sep = '▶'
+let airline_left_sep = '▶'
+let airline_right_sep = '▶'
 
-"g:airline#extensions#tabline#enabled = 1
-:set timeoutlen=50
+set timeoutlen=50
 
 syntax enable
 
-"set background=dark
 "Vim colorscheme
-let g:molokai_original=1
-let g:rehash256=1
-colorscheme molokai
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
 
-":set transparency=15
+set background=dark
+colorscheme hybrid
 
 "show line numbers on the left
-:set number
+set number
 
-:set mouse=a
+set mouse=a
 
 "highlight search strings
-:set hlsearch
+set hlsearch
 
 "All necessary things for correct tabbing (2 spaces/tab) and auto indentation
 "based on syntax
-:set et
-:set sw=2
-:set textwidth=80
-:set sts=2
-:set smarttab
-:set smartindent
-:syntax on
-:filetype indent on
-:set autoindent
-:set backspace=indent,eol,start
+set et
+set sw=2
+set textwidth=80
+set sts=2
+set smarttab
+set smartindent
+syntax on
+filetype indent on
+set autoindent
+set backspace=indent,eol,start
 
 "Maps space bar to spell checker (initially off)
-:nnoremap <space> :set spell!<cr>
+nnoremap <space> :set spell!<cr>
 
 "highlights 3 columns after 80 characters, to let you know to end your line
-:set colorcolumn=+1 ",+2,+3 "highlight three columns after 'textwidth'
+set colorcolumn=+1 ",+2,+3 "highlight three columns after 'textwidth'
 ":set cc=80
-:highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 "highlights trailing whitespace automatically removes it on write
-:highlight ExtraWhitespace ctermbg=cyan guibg=cyan
-:match ExtraWhitespace /\s\+$/
-:autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-:autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-:autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-:autocmd BufWinLeave * call clearmatches()
+highlight ExtraWhitespace ctermbg=cyan guibg=cyan
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 ":autocmd InsertLeave * match redraw!
-:autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
+
+"Key mappings.
+nnoremap gf <C-W>gf
+vnoremap gf <C-W>gf
