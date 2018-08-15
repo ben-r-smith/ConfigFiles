@@ -7,9 +7,12 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ajmwagar/vim-dues'
+Plugin 'lifepillar/vim-solarized8'
 Plugin 'beyondmarc/glsl.vim'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'raimondi/delimitmate'
+Plugin 'pangloss/vim-javascript'
 
 "Plugins go before this
 call vundle#end()
@@ -28,6 +31,10 @@ syntax enable
 "Vim colorscheme
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
+"set t_Co=88
+
+" Pymode settings.
+let g:pymode_folding = 0
 
 set background=dark
 colorscheme hybrid
@@ -45,6 +52,7 @@ set hlsearch
 set et
 set sw=2
 set textwidth=80
+set expandtab
 set sts=2
 set smarttab
 set smartindent
@@ -52,6 +60,8 @@ syntax on
 filetype indent on
 set autoindent
 set backspace=indent,eol,start
+
+au! FileType python setl nosmartindent
 
 "Maps space bar to spell checker (initially off)
 nnoremap <space> :set spell!<cr>
