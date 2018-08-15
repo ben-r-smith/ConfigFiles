@@ -24,7 +24,7 @@
 * Unnecessary whitespace is cleared upon writing or quitting
 
 ##### bashrc and bash_profile
-1. Update: `$ source ~/.bashrc` or `$ source ~/bash_pro (Run this command from the terminal).
+1. Update: `$ source ~/.bashrc` or `$ source ~/bash_profile` (Run this command from the terminal).
 
 ##### Noteable Features
 
