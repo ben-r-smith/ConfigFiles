@@ -1,0 +1,22 @@
+[user]
+    name = Ben Smith
+    email = <email>
+[alias]
+    co = checkout
+    cp = cherry-pick
+    ci = commit
+    rs = reset
+    rb = rebase
+    br = branch
+    stat = status
+    temp =  "!f(){ git add . && git ci -m\"temp\"; };f"
+    amend = ci --amend
+    sw = switch
+    vimdiff = "!f(){ git diff | vi -; };f"
+    update = "!f() { git fetch && git rebase origin/mainline };f"
+[core]
+    pager = less -F -X
+    editor = vim ;subl -n -w
+    autocrlf = input
+[pull]
+    rebase = true
