@@ -1,0 +1,86 @@
+set nocompatible
+filetype off
+filetype plugin indent on
+
+" Show line numbers on the left.
+set number
+set rnu
+
+" Use relative line numbers unless in insert mode.
+augroup toggle_relative_number
+autocmd InsertEnter * :setlocal nornu
+autocmd InsertLeave * :setlocal rnu
+
+" Mouse.
+set mouse=a
+
+" Search.
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Text rendering.
+set encoding=utf-8
+set scrolloff=5
+
+" Swp files.
+set directory=$HOME/.vim/swp//
+
+" Disable backups.
+set nobackup
+
+" Persist undo history.
+set undofile
+set undodir=$HOME/.vim/undo
+
+" All necessary things for correct tabbing (2 spaces/tab) and auto indentation
+" based on syntax.
+set et
+set sw=4
+set textwidth=100
+set expandtab
+set sts=4
+set smarttab
+set smartindent
+syntax enable
+filetype indent on
+set autoindent
+set backspace=indent,eol,start
+
+autocmd FileType gitcommit set textwidth=72
+autocmd FileType gitcommit set colorcolumn=73
+autocmd FileType gitcommit set colorcolumn+=51
+
+" Maps space bar to spell checker (initially off).
+nnoremap <space> :set spell!<cr>
+
+" Highlights 1 columns after 80 characters, to let you know to end your line.
+set colorcolumn=+1
+set cc=120
+highlight ColorColumn ctermbg=grey guibg=grey
+
+" Highlight trailing whitespace and automatically remove it on write.
+highlight ExtraWhitespace ctermbg=cyan guibg=cyan
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Make repeat operator work in visual mode.
+vnoremap . :normal.<CR>
+
+" Move visual selection.
+vnoremap J :m '>+1<CR>gv=gv'
+vnoremap K :m '<-2<CR>gv=gv'
+
+" Leader mappings.
+let mapleader=","
+nnoremap <Leader>w :w<CR>
+
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+vmap <Leader>p "+p
+vmap <Leader>P "+P
